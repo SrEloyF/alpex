@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="ALPEX Inmobiliaria. Encuentra propiedades exclusivas con alto retorno de inversión. Asesoría experta en bienes raíces.">
+    <title>ALPEX | Inmobiliaria de Alto Nivel</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="ALPEX Inmobiliaria">
+    <meta property="og:description" content="Propiedades exclusivas y asesoría de inversión inmobiliaria.">
+    <meta property="og:image" content="https://placehold.co/1200x630/111217/D9A520?text=ALPEX">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "ALPEX",
+      "image": "https://placehold.co/500x500/111217/D9A520?text=Logo",
+      "description": "Inmobiliaria especializada en propiedades de lujo e inversión.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. España 123",
+        "addressLocality": "Ciudad Capital",
+        "addressCountry": "PE"
+      },
+      "telephone": "+51987654321",
+      "priceRange": "$$$"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cómo calculan el ROI de las propiedades?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Analizamos plusvalía histórica, demanda de alquiler en la zona y proyecciones urbanísticas."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Ofrecen financiamiento directo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos con los principales bancos y ofrecemos asesoría para estructurar su crédito hipotecario."
+        }
+      }]
+    }
+    </script>
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --brand: #D9A520;
+            --brand-700: #B8860B;
+            --brand-300: #E6C260;
+            --bg-dark: #0b0d10;
+            --bg-card: #16181d;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-head: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --nav-height: 80px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #111217 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-head); color: #fff; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- UI COMPONENTES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--brand);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-300);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(217, 165, 32, 0.3);
+        }
+
+        .btn-outline {
+            border-color: var(--brand);
+            color: var(--brand);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(217, 165, 32, 0.1);
+        }
+
+        .section-padding { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .section-title span {
+            color: var(--brand);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 13, 16, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--nav-height);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--brand);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .hamburger { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* --- NOSOTROS --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        #nosotros {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #nosotros::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(217, 165, 32, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        /* RESULTADOS */
+        .premium-list {
+            margin: 30px 0;
+        }
+
+        .premium-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .premium-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .premium-list .icon-check {
+            width: 24px;
+            height: 24px;
+            background: rgba(217, 165, 32, 0.1);
+            border: 1px solid var(--brand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand);
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        .mission-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .mission-box:hover {
+            border-color: var(--brand);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px -12px rgba(217, 165, 32, 0.15);
+        }
+
+        .mission-box::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--brand), transparent, transparent);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .mission-box h3 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mission-box h3::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--brand);
+        }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .section-title { text-align: center !important; }
+            .premium-list li { justify-content: center; }
+            .mission-box h3 { justify-content: center; }
+        }
+
+        /* --- PROYECTOS --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--brand);
+            color: #000;
+            border-color: var(--brand);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .project-img img, 
+        .project-img video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-img video {
+            opacity: 0;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-tags {
+            font-size: 0.8rem;
+            color: var(--brand);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+        
+        .project-card:hover .project-img img { opacity: 0; }
+        .project-card:hover .project-img video { opacity: 1; }
+
+        /* --- BENEFICIOS (COUNTERS) --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 50px 30px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--brand), transparent);
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(217, 165, 32, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: rgba(217, 165, 32, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--brand);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: var(--brand);
+            color: #000;
+            box-shadow: 0 0 20px rgba(217, 165, 32, 0.4);
+        }
+
+        /* Estilo del Contador */
+        .counter-wrapper {
+            margin: 15px 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .counter {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            font-family: var(--font-head);
+            letter-spacing: -2px;
+        }
+
+        .counter-suffix {
+            font-size: 1.5rem;
+            color: var(--brand);
+            font-weight: 700;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .counter { font-size: 2.8rem; }
+            .benefit-card { padding: 40px 20px; }
+        }
+
+        /* --- TESTIMONIOS --- */
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px 5px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .quote-icon-fa {
+            font-size: 2.5rem;
+            color: var(--brand);
+            opacity: 0.2;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .stars {
+            color: var(--brand);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--brand);
+            padding: 2px;
+        }
+
+        .author-details h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .author-details span {
+            font-size: 0.8rem;
+            color: var(--brand-300);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonial-slider {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 30px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            
+            .testimonial-slider::-webkit-scrollbar { display: none; }
+
+            .testimonial-card {
+                min-width: 85%;
+                scroll-snap-align: center;
+            }
+        }
+
+        /* --- BLOG --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(217, 165, 32, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .blog-image-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blog-card:hover .blog-image-wrap img {
+            transform: scale(1.1);
+        }
+
+        .blog-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--brand);
+            color: #000;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .blog-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--brand-300);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .blog-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .blog-link {
+            margin-top: auto;
+            color: #fff;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+
+        .blog-card:hover .blog-link {
+            color: var(--brand);
+            gap: 12px;
+        }
+
+        .blog-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* --- NEWSLETTER --- */
+        .newsletter-section {
+            position: relative;
+            background-color: var(--brand);
+            color: #000;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c4951b"><path d="M2 19h4v-5h12v5h4V7l-9-5-9 5v12zm2 0v-5h4v5H4zm10 0v-5h4v5h-4z"/><rect x="7" y="9" width="2" height="2" fill="%23c4951b"/><rect x="15" y="9" width="2" height="2" fill="%23c4951b"/><rect x="7" y="13" width="2" height="2" fill="%23c4951b"/><rect x="15" y="13" width="2" height="2" fill="%23c4951b"/></svg>');
+            background-size: 80px 80px;
+            background-repeat: repeat;
+            opacity: 0.25;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 60px;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .newsletter-section h2 {
+            color: #000;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .newsletter-section p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            background: #fff;
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 550px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .newsletter-form:focus-within {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0 25px;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 500;
+            min-width: 0;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-form .btn-submit {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form .btn-submit:hover {
+            background: #222;
+            padding-right: 45px;
+        }
+
+        @media (max-width: 640px) {
+            .newsletter-content { padding: 40px 20px; }
+            .newsletter-section h2 { font-size: 1.8rem; }
+            
+            .newsletter-form {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+                gap: 15px;
+            }
+            
+            .newsletter-form input {
+                flex: none;
+                width: 100%; 
+                background: #fff;
+                height: 60px;
+                border-radius: 30px;
+                text-align: center;
+            }
+            
+            .newsletter-form .btn-submit {
+                height: 60px;
+            }
+        }
+
+        /* --- CONTACT FORM --- */
+        .form-container {
+            background: rgba(22, 24, 29, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 24px;
+            max-width: 850px;
+            margin: 0 auto;
+            border: 1px solid rgba(217, 165, 32, 0.1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; width: 40px; height: 40px;
+            border-top: 2px solid var(--brand);
+            border-left: 2px solid var(--brand);
+            border-radius: 24px 0 0 0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--brand-300);
+            transition: var(--transition);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--brand);
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .form-group input:not([type="checkbox"]), 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            padding-left: 15px;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(217, 165, 32, 0.05);
+            border-color: var(--brand);
+            box-shadow: 0 0 15px rgba(217, 165, 32, 0.2);
+        }
+
+        .form-group input:focus + i,
+        .form-group select:focus + i {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+
+        .checkbox-group label {
+            flex: 1;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text-muted);
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .btn-submit-contact {
+            padding: 18px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .form-container { padding: 40px 20px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+
+        /* --- FAQ --- */
+        .accordion-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 10px;
+        }
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:after { content: '+'; font-size: 1.5rem; color: var(--brand); }
+        .accordion-header[aria-expanded="true"]:after { content: '-'; }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-muted);
+        }
+        .accordion-content p { padding-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .social-icons a { margin-right: 15px; font-size: 1.2rem; }
+        .social-icons a:hover { color: var(--brand); }
+
+        /* --- MODAL --- */
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .modal.active { opacity: 1; pointer-events: all; }
+        .modal-content {
+            background: var(--bg-card);
+            width: 90%; max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+            border: 1px solid var(--brand-700);
+        }
+        .modal.active .modal-content { transform: translateY(0); }
+        .close-modal {
+            position: absolute; top: 15px; right: 15px;
+            background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;
+            z-index: 10;
+        }
+        .modal-body { padding: 40px; }
+        .timeline {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--brand);
+        }
+        .timeline-item { position: relative; padding-left: 20px; margin-bottom: 20px; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -26px; top: 5px; width: 10px; height: 10px;
+            background: var(--brand); border-radius: 50%; border: 2px solid var(--bg-card);
+        }
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 640px) {
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- FLOAT CTA MOBILE --- */
+        .float-cta {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--brand); color: #000;
+            padding: 15px; border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(217,165,32,0.4);
+            z-index: 999; display: none;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                right: 0;
+                height: calc(100vh - var(--nav-height));
+                width: 70%;
+                max-width: 300px; 
+                background: #0f1014;
+                flex-direction: column;
+                padding: 40px;
+                border-left: 1px solid rgba(255,255,255,0.1);
+                transform: translateX(100%);
+                visibility: hidden;
+                opacity: 0;
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                overflow-y: auto;
+            }
+            .nav-links.active {
+                transform: translateX(0);
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            .form-row { grid-template-columns: 1fr; }
+            .float-cta { display: flex; justify-content: center; align-items: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo_alpex.png" alt="ALPEX">
+            </a>
+            <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto" class="btn btn-primary" style="padding: 8px 20px;">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/video_hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Invierte en el futuro de tus sueños</h1>
+            <p>Descubre propiedades exclusivas con diseño vanguardista y un ROI comprobado.</p>
+            <a href="#contacto" class="btn btn-primary js-scroll">Contáctanos</a>
+        </div>
+    </section>
+
+    <section id="nosotros" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left;">
+                        <span>Legado y Visión</span>
+                        <h2>Redefiniendo el estándar inmobiliario</h2>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px;">
+                        En <strong>ALPEX</strong>, no solo vendemos metros cuadrados; curamos espacios de vida donde la arquitectura de vanguardia se encuentra con la rentabilidad estratégica.
+                    </p>
+                    
+                    <ul class="premium-list">
+                        <li>
+                            <span class="icon-check">✓</span>
+                            <span>Trayectoria consolidada con más de 15 años de éxito.</span>
+                        </li>
+                        <li>
+                            <span class="icon-check">✓</span>
+                            <span>Análisis de mercado con inteligencia de datos.</span>
+                        </li>
+                        <li>
+                            <span class="icon-check">✓</span>
+                            <span>Proyectos con certificación de sostenibilidad ambiental.</span>
+                        </li>
+                    </ul>
+
+                    <div style="margin-top: 40px;">
+                        <a href="#contacto" class="btn btn-primary js-scroll">Empezar ahora</a>
+                        <a href="#proyectos" class="btn btn-outline js-scroll" style="margin-left: 15px;">Ver Proyectos</a>
+                    </div>
+                </div>
+
+                <div class="mission-box">
+                    <h3 style="color: var(--brand); margin-bottom: 20px;">Nuestra Visión 2030</h3>
+                    <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.8; opacity: 0.9;">
+                        "Liderar la transformación digital y arquitectónica de la región, convirtiéndonos en el puente de confianza más sólido entre inversores con visión y el desarrollo urbano de alto impacto."
+                    </p>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <small style="color: var(--brand); text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">
+                            Compromiso • Integridad • Innovación
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="section-padding" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="section-title">
+                <span>Portafolio</span>
+                <h2>Proyectos Destacados</h2>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="residencial">Residencial</button>
+                <button class="filter-btn" data-filter="comercial">Comercial</button>
+                <button class="filter-btn" data-filter="oficinas">Oficinas</button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <span>Por qué elegirnos</span>
+                <h2>Resultados que hablan por nosotros</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3>Proyectos Entregados</h3>
+                    <div class="counter-wrapper">
+                        <span class="counter" data-target="45">0</span>
+                    </div>
+                    <p>Unidades residenciales y comerciales con acabados de alta gama.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3>Clientes Felices</h3>
+                    <div class="counter-wrapper">
+                        <span class="counter" data-target="320">0</span>
+                    </div>
+                    <p>Inversionistas que confían en nuestra gestión patrimonial.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>ROI Promedio</h3>
+                    <div class="counter-wrapper">
+                        <span class="counter" data-target="12">0</span>
+                        <span class="counter-suffix">%</span>
+                    </div>
+                    <p>Retorno anual neto garantizado por plusvalía y rentas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-title">
+                <span>Inteligencia del Mercado</span>
+                <h2>Actualidad Inmobiliaria</h2>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image-wrap">
+                        <span class="blog-badge">Mercado</span>
+                        <img src="assets/blog1.png" alt="Tendencias Inmobiliarias 2026" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <time class="blog-date" datetime="2026-01-20">20 ENE 2026</time>
+                        <h3>Tendencias que marcarán el sector este 2026</h3>
+                        <p>Descubre por qué la sostenibilidad y la domótica están definiendo el valor de reventa en el mercado premium.</p>
+                        <a href="#contacto" class="blog-link">Leer más <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image-wrap">
+                        <span class="blog-badge">Inversión</span>
+                        <img src="assets/blog1.png" alt="Revalorizar propiedad" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <time class="blog-date" datetime="2026-01-15">15 ENE 2026</time>
+                        <h3>Guía: Cómo aumentar el ROI de tu propiedad</h3>
+                        <p>Pequeñas reformas inteligentes que pueden incrementar el valor de tu inmueble hasta en un 15%.</p>
+                        <a href="#contacto" class="blog-link">Leer más <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image-wrap">
+                        <span class="blog-badge">Legal</span>
+                        <img src="assets/blog1.png" alt="Guía legal" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <time class="blog-date" datetime="2026-01-08">08 ENE 2026</time>
+                        <h3>Documentación clave para una compra segura</h3>
+                        <p>Todo lo que necesitas saber antes de firmar una escritura para evitar sorpresas legales innecesarias.</p>
+                        <a href="#contacto" class="blog-link">Leer más <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="blog-footer">
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    Ir al blog completo <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; margin-left: 5px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="section-padding container">
+        <div class="container">
+            <div class="section-title">
+                <span>Confianza de Élite</span>
+                <h2>Historias de éxito con ALPEX</h2>
+            </div>
+
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div>
+                        <i class="fa-solid fa-quote-left quote-icon-fa"></i>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"La asesoría de ALPEX fue fundamental para encontrar mi departamento ideal. Su capacidad para entender lo que buscaba como inversionista fue excepcional."</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="assets/cliente1.png" alt="Carlos Méndez" class="author-avatar">
+                        <div class="author-details">
+                            <h4>Carlos Méndez</h4>
+                            <span>Inversionista Senior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <i class="fa-solid fa-quote-left quote-icon-fa"></i>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Gracias al equipo logré vender mi propiedad en tiempo récord. El marketing digital que aplicaron superó todas mis expectativas de precio."</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="assets/cliente1.png" alt="Sofía Alva" class="author-avatar">
+                        <div class="author-details">
+                            <h4>Sofía Alva</h4>
+                            <span>Propietaria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <i class="fa-solid fa-quote-left quote-icon-fa"></i>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Transparencia y claridad en cada paso. Comprar sobre planos nunca fue tan seguro. La atención post-venta es lo que realmente marca la diferencia."</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="assets/cliente1.png" alt="Javier Torres" class="author-avatar">
+                        <div class="author-details">
+                            <h4>Javier Torres</h4>
+                            <span>Arquitecto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container" style="max-width: 800px;">
+            <div class="newsletter-content" style="text-align: center;">
+                <h2>Obtén nuestra Guía de Inversión</h2>
+                <p>Únete a nuestra comunidad exclusiva y recibe gratis el PDF: <strong>"Claves para invertir con éxito en 2026"</strong>.</p>
+                
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+                    <button type="submit" class="btn-submit">
+                        Suscribirme <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
+                    </button>
+                </form>
+                
+                <small style="display: block; margin-top: 20px; opacity: 0.6; font-weight: 600;">
+                    <i class="fa-solid fa-shield-halved"></i> Privacidad garantizada. Sin spam.
+                </small>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-padding container">
+        <div class="container">
+            <div class="section-title">
+                <span>Canal Directo</span>
+                <h2>Empieza tu proyecto hoy</h2>
+            </div>
+
+            <div class="form-container">
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" required>
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono de contacto</label>
+                            <div class="input-wrapper">
+                                <input type="tel" id="phone" name="phone" placeholder="+51 900 000 000" required>
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Interés Principal</label>
+                            <div class="input-wrapper">
+                                <select id="type" name="type">
+                                    <option value="Ventas">Comprar Propiedad</option>
+                                    <option value="Inversiones">Oportunidades de Inversión</option>
+                                    <option value="Soporte">Atención al Cliente</option>
+                                    <option value="Prensa">Relaciones Públicas / Prensa</option>
+                                </select>
+                                <i class="fa-solid fa-building-circle-check"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Cuéntanos más sobre tus planes</label>
+                        <textarea id="message" name="message" rows="4" placeholder="¿En qué zona estás interesado? ¿Buscas vivienda o inversión?"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="privacy" required>
+                        <label for="privacy">He leído y acepto los <strong>Términos de Privacidad</strong> para el tratamiento de mis datos personales.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit-contact" style="width: 100%;">
+                        Enviar Solicitud <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <div id="form-feedback" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="qa" class="section-padding container">
+        <div class="container">
+            <div class="section-title">
+                <span>Q/A</span>
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">¿Qué retorno de inversión (ROI) puedo esperar?</button>
+                    <div class="accordion-content">
+                        <p>Nuestros proyectos están diseñados para ofrecer un ROI estimado entre el 8% y 12% anual, dependiendo de la fase de entrada (preventa o entrega inmediata).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">¿Manejan propiedades en el extranjero?</button>
+                    <div class="accordion-content">
+                        <p>Actualmente nos enfocamos en el mercado nacional premium, pero contamos con alianzas para referir clientes a oportunidades en Miami y Madrid.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">¿Cómo es el proceso de reserva?</button>
+                    <div class="accordion-content">
+                        <p>Puedes reservar una unidad con un 5% del valor total. Luego tienes 15 días para completar la evaluación crediticia y firma de contrato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo">
+                        <img src="assets/logo_alpex.png" alt="ALPEX">
+                    </a>
+                    <p style="color: var(--text-muted); margin-top: 15px;">Construyendo confianza, cimentando futuros.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Navegación</h4>
+                    <ul>
+                        <li><a href="#proyectos" style="color: var(--text-muted);">Proyectos</a></li>
+                        <li><a href="#blog" style="color: var(--text-muted);">Blog</a></li>
+                        <li><a href="#contacto" style="color: var(--text-muted);">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Contacto</h4>
+                    <p style="color: var(--text-muted);">contacto@alpex.com</p>
+                    <p style="color: var(--text-muted);">+51 987 654 321</p>
+                    <div class="social-icons" style="margin-top: 15px;">
+                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 ALPEX Inmobiliaria. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <a href="#contacto" class="float-cta">✉</a>
+
+    <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-body">
+                <h2 id="modal-title" style="color: var(--brand);">Titulo Proyecto</h2>
+                <p id="modal-cat" style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px;">Categoría</p>
+                
+                <p id="modal-desc">Descripción detallada...</p>
+                
+                <h4 style="margin-top: 30px;">Cronograma</h4>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Lanzamiento:</strong> <span id="modal-date-1">2024</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Construcción:</strong> <span id="modal-date-2">2025</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Entrega:</strong> <span id="modal-date-3">2026</span>
+                    </div>
+                </div>
+
+                <a href="#contacto" class="btn btn-primary" style="margin-top: 30px; width: 100%;" onclick="closeModal()">Solicitar Cotización</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const projectsData = [
+                {
+                    id: 1,
+                    title: "Torre Aurum",
+                    category: "residencial",
+                    mainImg: "assets/proyecto1.png",
+                    video: "assets/proyecto1.mp4",
+                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
+                    desc: "Exclusivos departamentos con vista al mar. Acabados en mármol y domótica integrada. Ubicado en la zona más prestigiosa de la ciudad.",
+                    timeline: ["Enero 2024", "Julio 2025", "Diciembre 2026"]
+                },
+                {
+                    id: 2,
+                    title: "Oficinas Prime",
+                    category: "oficinas",
+                    mainImg: "assets/proyecto1.png",
+                    video: "assets/proyecto1.mp4",
+                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
+                    desc: "Espacios de trabajo colaborativos certificados LEED Gold. Eficiencia energética y ubicación estratégica en el centro financiero.",
+                    timeline: ["Marzo 2023", "Agosto 2024", "Finalizado"]
+                },
+                {
+                    id: 3,
+                    title: "Plaza Comercial Sur",
+                    category: "comercial",
+                    mainImg: "assets/proyecto1.png",
+                    video: "assets/proyecto1.mp4",
+                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
+                    desc: "Centro comercial open-air con tiendas de lujo y gastronomía. Alto flujo peatonal garantizado.",
+                    timeline: ["Febrero 2025", "Enero 2026", "Junio 2027"]
+                },
+                {
+                    id: 4,
+                    title: "Residencial Los Olivos",
+                    category: "residencial",
+                    mainImg: "assets/proyecto1.png",
+                    video: "assets/proyecto1.mp4",
+                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_2.png", "assets/proyecto1_3.png", "assets/proyecto1_4.png"],
+                    desc: "Viviendas familiares rodeadas de parques privados. Seguridad 24/7 y club house completo.",
+                    timeline: ["Junio 2024", "Mayo 2025", "Marzo 2026"]
+                }
+            ];
+
+            const grid = document.getElementById('projects-grid');
+            
+            function renderProjects(filter = 'all') {
+                const grid = document.getElementById('projects-grid');
+                grid.innerHTML = '';
+                const filtered = filter === 'all' ? projectsData : projectsData.filter(p => p.category === filter);
+                
+                filtered.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <div class="project-img">
+                            <img src="${p.mainImg}" alt="${p.title}" loading="lazy">
+                            <video src="${p.video}" muted loop playsinline></video>
+                            <div class="overlay"><span class="btn btn-outline" style="color:#fff; border-color:#fff;">Explorar</span></div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tags">${p.category.toUpperCase()}</span>
+                            <h3>${p.title}</h3>
+                        </div>
+                    `;
+                    
+                    const video = card.querySelector('video');
+                    card.addEventListener('mouseenter', () => video.play());
+                    card.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+
+                    card.addEventListener('click', () => openModal(p));
+                    grid.appendChild(card);
+                });
+            }
+            renderProjects();
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderProjects(e.target.dataset.filter);
+                });
+            });
+
+            const modal = document.getElementById('project-modal');
+            const closeBtn = document.querySelector('.close-modal');
+            let lastFocusedElement;
+
+            function openModal(project) {
+                const modal = document.getElementById('project-modal');
+                document.getElementById('modal-title').innerText = project.title;
+                document.getElementById('modal-cat').innerText = project.category;
+                document.getElementById('modal-desc').innerText = project.desc;
+                
+                const body = document.querySelector('.modal-body');
+                let galleryContainer = document.querySelector('.modal-gallery');
+                if (!galleryContainer) {
+                    galleryContainer = document.createElement('div');
+                    galleryContainer.className = 'modal-gallery';
+                    body.insertBefore(galleryContainer, document.getElementById('modal-desc'));
+                }
+                
+                galleryContainer.innerHTML = project.gallery.map(imgSrc => 
+                    `<img src="${imgSrc}" alt="Detalle ${project.title}" loading="lazy">`
+                ).join('');
+
+                document.getElementById('modal-date-1').innerText = project.timeline[0];
+                document.getElementById('modal-date-2').innerText = project.timeline[1];
+                document.getElementById('modal-date-3').innerText = project.timeline[2];
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                modal.removeEventListener('keydown', trapFocus);
+                if (lastFocusedElement) lastFocusedElement.focus();
+            }
+
+            function trapFocus(e) {
+                if (e.key === 'Escape') closeModal();
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', trapFocus);
+
+            document.addEventListener('click', (e) => {
+                if (e.target.textContent === 'Solicitar Cotización') {
+                    closeModal();
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+                hamburger.setAttribute('aria-expanded', !expanded);
+                navLinks.classList.toggle('active');
+                document.body.style.overflow = !expanded ? 'hidden' : '';
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', false);
+                document.body.style.overflow = '';
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('form-feedback');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerText;
+                
+                const phone = document.getElementById('phone').value;
+                if (!/^\+?[\d\s-]{7,}$/.test(phone)) {
+                    showFeedback('Por favor ingrese un teléfono válido.', 'error');
+                    return;
+                }
+
+                btn.disabled = true;
+                btn.innerText = 'Enviando...';
+                feedback.style.display = 'none';
+
+                try {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    showFeedback('¡Mensaje enviado con éxito! Nos contactaremos pronto.', 'success');
+                    form.reset();
+                } catch (err) {
+                    showFeedback('Hubo un error. Intente nuevamente.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                }
+            });
+
+            function showFeedback(msg, type) {
+                feedback.innerText = msg;
+                feedback.className = `form-message ${type}`;
+                feedback.style.display = 'block';
+            }
+
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        animateCounter(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(c => observer.observe(c));
+
+            function animateCounter(el, target) {
+                let current = 0;
+                const inc = target / 50; 
+                const timer = setInterval(() => {
+                    current += inc;
+                    if (current >= target) {
+                        el.innerText = "+" + target;
+                        clearInterval(timer);
+                    } else {
+                        el.innerText = "+" + Math.ceil(current);
+                    }
+                }, 40);
+            }
+
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const expanded = header.getAttribute('aria-expanded') === 'true';
+                    const content = header.nextElementSibling;
+                    
+                    document.querySelectorAll('.accordion-header').forEach(h => {
+                        h.setAttribute('aria-expanded', 'false');
+                        h.nextElementSibling.style.maxHeight = null;
+                    });
+
+                    if (!expanded) {
+                        header.setAttribute('aria-expanded', 'true');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = document.getElementById('hero').offsetHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const mouse = { x: null, y: null };
+            window.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX;
+                mouse.y = e.clientY - rect.top;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = '#D9A520';
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        this.x -= dx/10;
+                        this.y -= dy/10;
+                    }
+
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 0.5;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                const n = window.innerWidth < 600 ? 30 : 80;
+                for (let i = 0; i < n; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+            
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (!mediaQuery.matches) {
+                initParticles();
+                function animateParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particlesArray.forEach(p => {
+                        p.update();
+                        p.draw();
+                    });
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            }
+        });
+    </script>
+</body>
+</html>
