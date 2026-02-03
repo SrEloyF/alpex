@@ -973,7 +973,7 @@
         .newsletter-content {
             position: relative;
             z-index: 2;
-            background: rgba(0, 0, 0, 0.12);
+            background: rgba(0, 0, 0, 0.3);
             padding: 60px;
             border-radius: 24px;
             border: 1px solid rgba(0, 0, 0, 0.05);
@@ -987,7 +987,7 @@
         }
 
         .newsletter-section h2 {
-            color: #000;
+            color: #fff;
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 15px;
@@ -995,6 +995,7 @@
         }
 
         .newsletter-section p {
+            color: #fff;
             font-size: 1.1rem;
             margin-bottom: 35px;
             opacity: 0.8;
@@ -1151,6 +1152,47 @@
             font-size: 0.9rem;
             margin: 0;
             color: var(--brand-300);
+        }
+
+        /* --- SUBTÍTULO DINÁMICO ACADEMIA --- */
+        .academia-dynamic-title {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            margin-bottom: 12.5%;
+        }
+
+        .academia-dynamic-title .highlight {
+            color: var(--brand);
+            display: inline-block;
+            position: relative;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 200px;
+        }
+
+        .word-swipe {
+            animation: wordSwipeAnim 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes wordSwipeAnim {
+            0% {
+                opacity: 0;
+                transform: translateY(15px) skewY(2deg);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) skewY(0deg);
+                filter: blur(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .academia-dynamic-title { font-size: 1.6rem; text-align: center; }
         }
 
         .academia-modules-grid {
@@ -1892,21 +1934,14 @@
 
             <div class="academia-grid">
                 <div class="academia-image-col reveal">
+                    <h2 class="academia-dynamic-title">
+                        Nuestra base es la <br>
+                        <span id="academia-rotator" class="highlight">Experiencia</span>
+                    </h2>
                     <div class="academia-image-wrap">
                         <img src="assets/academia.png" alt="Academia ALPEX" loading="lazy">
-                        
-                        <div class="academia-overlay">
-                            <div class="academia-overlay-icon">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <div class="academia-overlay-text">
-                                <h3>Academia ALPEX</h3>
-                                <p>Tu camino al éxito inmobiliario</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
                 <div class="academia-content-col">
                     <p class="academia-description reveal">
                         Todo lo que necesitas para iniciar y escalar en el sector inmobiliario. Desde ventas y marketing hasta aspectos legales y desarrollo de proyectos. Nuestros programas están diseñados por expertos para generar resultados reales.
@@ -1981,7 +2016,7 @@
                     </button>
                 </form>
                 
-                <small style="display: block; margin-top: 20px; opacity: 0.6; font-weight: 600;">
+                <small style="display: block; margin-top: 20px; opacity: 0.6; font-weight: 600; color: #fff;">
                     <i class="fa-solid fa-shield-halved"></i> Privacidad garantizada. Sin spam.
                 </small>
             </div>
@@ -2172,22 +2207,19 @@
             });
 
             const revealOptions = {
-                threshold: 0.15, // Se activa cuando el 15% del elemento es visible
-                rootMargin: "0px 0px -50px 0px" // Margen inferior para que no aparezca justo en el borde
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
             };
 
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Añadimos la clase active
                         entry.target.classList.add('active');
-                        // Dejamos de observar este elemento (opcional, si solo quieres que pase una vez)
                         observer.unobserve(entry.target);
                     }
                 });
             }, revealOptions);
 
-            // 2. Buscamos todos los elementos con la clase .reveal y los observamos
             const elementsToReveal = document.querySelectorAll('.reveal');
             elementsToReveal.forEach(el => revealObserver.observe(el));
 
@@ -2233,6 +2265,22 @@
                     timeline: ["Junio 2024", "Mayo 2025", "Marzo 2026"]
                 }
             ];
+
+            const academiaWords = ["Experiencia", "Influencia", "Calidad", "Innovación", "Estrategia", "Productividad"];
+            let currentWordIndex = 0;
+            const rotatorElement = document.getElementById('academia-rotator');
+            function rotateAcademiaWord() {
+                rotatorElement.style.opacity = "0";
+                setTimeout(() => {
+                    currentWordIndex = (currentWordIndex + 1) % academiaWords.length;
+                    rotatorElement.textContent = academiaWords[currentWordIndex];
+                    rotatorElement.classList.remove('word-swipe');
+                    void rotatorElement.offsetWidth;
+                    rotatorElement.classList.add('word-swipe');
+                    rotatorElement.style.opacity = "1";
+                }, 300);
+            }
+            setInterval(rotateAcademiaWord, 3000);
 
             const grid = document.getElementById('projects-grid');
             
