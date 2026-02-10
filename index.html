@@ -267,6 +267,9 @@
         .nav-links a:not(.boton):hover::after {
             width: 100%;
         }
+        .close-menu-li {
+            display: none;
+        }
 
         .hamburger { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
@@ -331,7 +334,7 @@
             margin-bottom: 20px;
             line-height: 1.1;
         }
-        .hero h1 .gold {
+        .gold {
             background: linear-gradient(
                 to right,
                 #b8860b 0%,
@@ -342,14 +345,16 @@
             );
             background-size: 300% 100%;
             background-position: 0% center;
-
+            background-clip: text;  
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
+            transition: text-shadow 0.3s ease;
         }
 
-        .hero h1 .gold:hover {
-            animation: shine 1.6s linear infinite;
+        .gold:hover {
+            animation: shine 4s linear infinite;
+            text-shadow: 0 8px 32px var(--brand-300);
         }
 
         @keyframes shine {
@@ -358,6 +363,13 @@
             }
             to {
                 background-position: 300% center;
+            }
+        }
+
+        @media (hover: none) {
+            .gold {
+                animation: shine 4s linear infinite;
+                text-shadow: 0 8px 32px var(--brand-300);
             }
         }
 
@@ -465,6 +477,25 @@
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 25px;
+        }
+        .btn-nosotros {
+            margin-top: 40px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        @media (max-width: 992px) {
+            .about-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-nosotros {
+                justify-content: center;
+            }
         }
 
         /* RESULTADOS */
@@ -581,11 +612,11 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+            justify-content: center; 
             gap: 30px;
-        }
 
-        @media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+        }
         @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
 
         .project-card {
@@ -1113,86 +1144,21 @@
             transform: scale(1.05);
         }
 
-        .academia-overlay {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            background: rgba(22, 24, 29, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 20px 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(217, 165, 32, 0.2);
+        .academia-image-col {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            max-width: calc(100% - 60px);
-        }
-
-        .academia-overlay-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--brand);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: #000;
+            flex-direction: column;
         }
 
-        .academia-overlay-text h3 {
-            font-size: 1.1rem;
-            margin: 0;
-            color: #fff;
-        }
-
-        .academia-overlay-text p {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--brand-300);
-        }
-
-        /* --- SUBTÍTULO DINÁMICO ACADEMIA --- */
-        .academia-dynamic-title {
-            font-family: var(--font-head);
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 25px;
-            line-height: 1.2;
-            margin-bottom: 12.5%;
-        }
-
-        .academia-dynamic-title .highlight {
-            color: var(--brand);
-            display: inline-block;
-            position: relative;
-            font-weight: 700;
+        .highlight-academia {
+            text-align: center;
+            font-size: clamp(2.6rem, 4vw, 3.6rem);
+            line-height: 1.05;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.18em;
             min-width: 200px;
-        }
-
-        .word-swipe {
-            animation: wordSwipeAnim 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-
-        @keyframes wordSwipeAnim {
-            0% {
-                opacity: 0;
-                transform: translateY(15px) skewY(2deg);
-                filter: blur(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) skewY(0deg);
-                filter: blur(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .academia-dynamic-title { font-size: 1.6rem; text-align: center; }
+            margin-bottom: 15%;
         }
 
         .academia-modules-grid {
@@ -1253,9 +1219,6 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            .academia-image-col {
-                order: -1;
-            }
             .academia-modules-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -1272,16 +1235,6 @@
             .academia-modules-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .academia-overlay {
-                bottom: 20px;
-                left: 20px;
-                padding: 15px;
-                max-width: calc(100% - 40px);
-            }
-            .academia-overlay-icon {
-                width: 40px; height: 40px; font-size: 1.2rem;
-            }
-            .academia-overlay-text h3 { font-size: 1rem; }
         }
 
         /* --- CONTACT FORM --- */
@@ -1475,6 +1428,12 @@
         .social-icons a { margin-right: 15px; font-size: 1.2rem; }
         .social-icons a:hover { color: var(--brand); }
 
+        .footer-nav ul {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(120px, 1fr));
+            gap: 10px 30px;
+        }
+
         /* --- MODAL --- */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -1557,23 +1516,52 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            .close-menu-li {
+                display: block;
+                width: 100%;
+                text-align: right;
+                margin-bottom: 20px;
+            }
+
+            .close-menu {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 2.5rem;
+                cursor: pointer;
+                padding: 0 10px;
+                line-height: 1;
+                transition: color 0.3s;
+            }
+
+            .close-menu:hover {
+                color: var(--brand);
+            }
             .nav-links {
                 position: fixed;
-                top: var(--nav-height);
+                top: 0;
                 right: 0;
-                height: calc(100vh - var(--nav-height));
+                height: 100vh;
+
                 width: 70%;
-                max-width: 300px; 
+                max-width: 300px;
                 background: #0f1014;
+
                 flex-direction: column;
                 padding: 40px;
                 border-left: 1px solid rgba(255,255,255,0.1);
+
                 transform: translateX(100%);
                 visibility: hidden;
                 opacity: 0;
-                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s;
+                transition: transform 0.3s ease-in-out,
+                            opacity 0.3s ease-in-out,
+                            visibility 0.3s;
+
                 box-shadow: -5px 0 15px rgba(0,0,0,0.5);
                 overflow-y: auto;
+
+                z-index: 1100;
             }
             .nav-links.active {
                 transform: translateX(0);
@@ -1642,11 +1630,16 @@
             </a>
             <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
             <ul class="nav-links">
+                <li class="close-menu-li">
+                    <button class="close-menu" aria-label="Cerrar menú">&times;</button>
+                </li>
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#beneficios">Beneficios</a></li>
                 <li><a href="#blog">Blog</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#academia">Academia</a></li>
                 <li><a href="#contacto" class="btn btn-primary boton">Contacto</a></li>
             </ul>
         </div>
@@ -1709,9 +1702,9 @@
                         </li>
                     </ul>
 
-                    <div style="margin-top: 40px;" class="reveal">
+                    <div class="btn-nosotros reveal">
                         <a href="#contacto" class="btn btn-primary">Empezar ahora</a>
-                        <a href="#proyectos" class="btn btn-outline" style="margin-left: 15px;">Ver Proyectos</a>
+                        <a href="#proyectos" class="btn btn-outline">Ver Proyectos</a>
                     </div>
                 </div>
 
@@ -1737,12 +1730,14 @@
                 <h2>Proyectos Destacados</h2>
             </div>
 
+            <!--
             <div class="filters reveal">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="residencial">Residencial</button>
                 <button class="filter-btn" data-filter="comercial">Comercial</button>
                 <button class="filter-btn" data-filter="oficinas">Oficinas</button>
             </div>
+            -->
 
             <div class="projects-grid reveal" id="projects-grid">
             </div>
@@ -1762,9 +1757,9 @@
                     </div>
                     <h3>Proyectos Entregados</h3>
                     <div class="counter-wrapper">
-                        <span class="counter" data-target="45">0</span>
+                        <span class="counter" data-target="3">0</span>
                     </div>
-                    <p>Unidades residenciales y comerciales con acabados de alta gama.</p>
+                    <p>Unidades residenciales, casas de playa y casas de campo.</p>
                 </div>
 
                 <div class="benefit-card">
@@ -1773,9 +1768,9 @@
                     </div>
                     <h3>Clientes Felices</h3>
                     <div class="counter-wrapper">
-                        <span class="counter" data-target="320">0</span>
+                        <span class="counter" data-target="1000">0</span>
                     </div>
-                    <p>Inversionistas que confían en nuestra gestión patrimonial.</p>
+                    <p>Inversionistas y propietarios que confían en nosotros.</p>
                 </div>
 
                 <div class="benefit-card">
@@ -1784,10 +1779,10 @@
                     </div>
                     <h3>ROI Promedio</h3>
                     <div class="counter-wrapper">
-                        <span class="counter" data-target="12">0</span>
+                        <span class="counter" data-target="30">0</span>
                         <span class="counter-suffix">%</span>
                     </div>
-                    <p>Retorno anual neto garantizado por plusvalía y rentas.</p>
+                    <p>Retorno anual neto por plusvalía y rentas.</p>
                 </div>
             </div>
         </div>
@@ -1934,9 +1929,8 @@
 
             <div class="academia-grid">
                 <div class="academia-image-col reveal">
-                    <h2 class="academia-dynamic-title">
-                        Nuestra base es la <br>
-                        <span id="academia-rotator" class="highlight">Experiencia</span>
+                    <h2 class="gold highlight-academia">
+                        <span class="">ACADEMIA<br>ALPEX</span>
                     </h2>
                     <div class="academia-image-wrap">
                         <img src="assets/academia.png" alt="Academia ALPEX" loading="lazy">
@@ -2003,7 +1997,7 @@
         </div>
     </section>
 
-    <section class="newsletter-section">
+    <section id="newsletter" class="newsletter-section">
         <div class="container" style="max-width: 800px;">
             <div class="newsletter-content reveal" style="text-align: center;">
                 <h2>Obtén nuestra Guía de Inversión</h2>
@@ -2061,10 +2055,9 @@
                             <label for="type">Interés Principal</label>
                             <div class="input-wrapper">
                                 <select id="type" name="type">
-                                    <option value="Ventas">Comprar Propiedad</option>
-                                    <option value="Inversiones">Oportunidades de Inversión</option>
-                                    <option value="Soporte">Atención al Cliente</option>
-                                    <option value="Prensa">Relaciones Públicas / Prensa</option>
+                                    <option value="Gondor">Reinos de Gondor</option>
+                                    <option value="Golf">Colinas del Golf</option>
+                                    <option value="Inversiones">Quiero ser inversionista</option>
                                 </select>
                                 <i class="fa-solid fa-building-circle-check"></i>
                             </div>
@@ -2099,21 +2092,27 @@
             </div>
             <div class="faq-container reveal" style="max-width: 800px; margin: 0 auto;">
                 <div class="accordion-item">
-                    <button class="accordion-header" aria-expanded="false">¿Qué retorno de inversión (ROI) puedo esperar?</button>
+                    <button class="accordion-header" aria-expanded="false">¿Los proyectos se entregan con título de propiedad?</button>
                     <div class="accordion-content">
-                        <p>Nuestros proyectos están diseñados para ofrecer un ROI estimado entre el 8% y 12% anual, dependiendo de la fase de entrada (preventa o entrega inmediata).</p>
+                        <p>Sí, todos nuestros proyectos se entregan con título de propiedad debidamente inscrito.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header" aria-expanded="false">¿Manejan propiedades en el extranjero?</button>
+                    <button class="accordion-header" aria-expanded="false">¿La compra es segura y respaldada legalmente?</button>
                     <div class="accordion-content">
-                        <p>Actualmente nos enfocamos en el mercado nacional premium, pero contamos con alianzas para referir clientes a oportunidades en Miami y Madrid.</p>
+                        <p>Sí. Trabajamos con procesos legales claros que garantizan una compra segura.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header" aria-expanded="false">¿Cómo es el proceso de reserva?</button>
+                    <button class="accordion-header" aria-expanded="false">¿Las casas de campo pueden usarse para vivienda o inversión?</button>
                     <div class="accordion-content">
-                        <p>Puedes reservar una unidad con un 5% del valor total. Luego tienes 15 días para completar la evaluación crediticia y firma de contrato.</p>
+                        <p>Sí. Nuestros proyectos están pensados tanto para uso familiar como para inversión a largo plazo.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">¿La empresa brinda acompañamiento durante todo el proceso de compra?</button>
+                    <div class="accordion-content">
+                        <p>Sí. Acompañamos al cliente desde la separación hasta la entrega del inmueble.</p>
                     </div>
                 </div>
             </div>
@@ -2129,11 +2128,17 @@
                     </a>
                     <p style="color: var(--text-muted); margin-top: 15px;">Construyendo confianza, cimentando futuros.</p>
                 </div>
-                <div>
+                <div class="footer-nav">
                     <h4 style="margin-bottom: 20px;">Navegación</h4>
                     <ul>
+                        <li><a href="#hero" style="color: var(--text-muted);">Inicio</a></li>
+                        <li><a href="#nosotros"style="color: var(--text-muted);">Nosotros</a></li>
                         <li><a href="#proyectos" style="color: var(--text-muted);">Proyectos</a></li>
+                        <li><a href="#beneficios" style="color: var(--text-muted);">Beneficios</a></li>
                         <li><a href="#blog" style="color: var(--text-muted);">Blog</a></li>
+                        <li><a href="#testimonios" style="color: var(--text-muted);">Testimonios</a></li>
+                        <li><a href="#academia" style="color: var(--text-muted);">Academia ALPEX</a></li>
+                        <li><a href="#newsletter" style="color: var(--text-muted);">Newsletter</a></li>
                         <li><a href="#contacto" style="color: var(--text-muted);">Contacto</a></li>
                     </ul>
                 </div>
@@ -2226,61 +2231,25 @@
             const projectsData = [
                 {
                     id: 1,
-                    title: "Torre Aurum",
-                    category: "residencial",
+                    title: "Reinos de Gondor",
+                    category: "Casas de Campo",
                     mainImg: "assets/proyecto1.png",
                     video: "assets/proyecto1.mp4",
                     gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
                     desc: "Exclusivos departamentos con vista al mar. Acabados en mármol y domótica integrada. Ubicado en la zona más prestigiosa de la ciudad.",
-                    timeline: ["Enero 2024", "Julio 2025", "Diciembre 2026"]
+                    timeline: ["Enero 2024", "Julio 2025", "Marzo 2026"]
                 },
                 {
                     id: 2,
-                    title: "Oficinas Prime",
-                    category: "oficinas",
+                    title: "Colinas del Golf",
+                    category: "Casas de Campo",
                     mainImg: "assets/proyecto1.png",
                     video: "assets/proyecto1.mp4",
                     gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
                     desc: "Espacios de trabajo colaborativos certificados LEED Gold. Eficiencia energética y ubicación estratégica en el centro financiero.",
                     timeline: ["Marzo 2023", "Agosto 2024", "Finalizado"]
                 },
-                {
-                    id: 3,
-                    title: "Plaza Comercial Sur",
-                    category: "comercial",
-                    mainImg: "assets/proyecto1.png",
-                    video: "assets/proyecto1.mp4",
-                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
-                    desc: "Centro comercial open-air con tiendas de lujo y gastronomía. Alto flujo peatonal garantizado.",
-                    timeline: ["Febrero 2025", "Enero 2026", "Junio 2027"]
-                },
-                {
-                    id: 4,
-                    title: "Residencial Los Olivos",
-                    category: "residencial",
-                    mainImg: "assets/proyecto1.png",
-                    video: "assets/proyecto1.mp4",
-                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_2.png", "assets/proyecto1_3.png", "assets/proyecto1_4.png"],
-                    desc: "Viviendas familiares rodeadas de parques privados. Seguridad 24/7 y club house completo.",
-                    timeline: ["Junio 2024", "Mayo 2025", "Marzo 2026"]
-                }
             ];
-
-            const academiaWords = ["Experiencia", "Influencia", "Calidad", "Innovación", "Estrategia", "Productividad"];
-            let currentWordIndex = 0;
-            const rotatorElement = document.getElementById('academia-rotator');
-            function rotateAcademiaWord() {
-                rotatorElement.style.opacity = "0";
-                setTimeout(() => {
-                    currentWordIndex = (currentWordIndex + 1) % academiaWords.length;
-                    rotatorElement.textContent = academiaWords[currentWordIndex];
-                    rotatorElement.classList.remove('word-swipe');
-                    void rotatorElement.offsetWidth;
-                    rotatorElement.classList.add('word-swipe');
-                    rotatorElement.style.opacity = "1";
-                }, 300);
-            }
-            setInterval(rotateAcademiaWord, 3000);
 
             const grid = document.getElementById('projects-grid');
             
@@ -2378,6 +2347,7 @@
             });
 
             const hamburger = document.querySelector('.hamburger');
+            const closeBtnNav = document.querySelector('.close-menu');
             const navLinks = document.querySelector('.nav-links');
 
             hamburger.addEventListener('click', () => {
@@ -2391,6 +2361,19 @@
                 link.addEventListener('click', () => {
                     closeMenu();
                 });
+            });
+
+            if (closeBtnNav) {
+                closeBtnNav.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', false);
+                });
+            }
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', false);
+                }
             });
 
             function closeMenu() {
@@ -2452,11 +2435,12 @@
             }
 
             const counters = document.querySelectorAll('.counter');
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const target = +entry.target.getAttribute('data-target');
-                        animateCounter(entry.target, target);
+                        const target = +entry.target.dataset.target;
+                        animateCounter(entry.target, target, 800);
                         observer.unobserve(entry.target);
                     }
                 });
@@ -2464,19 +2448,27 @@
 
             counters.forEach(c => observer.observe(c));
 
-            function animateCounter(el, target) {
-                let current = 0;
-                const inc = target / 50; 
-                const timer = setInterval(() => {
-                    current += inc;
-                    if (current >= target) {
-                        el.innerText = "+" + target;
-                        clearInterval(timer);
+            function animateCounter(el, target, duration) {
+                let start = 0;
+                let startTime = null;
+
+                function update(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+
+                    const value = Math.floor(progress * target);
+                    el.innerText = "+" + value;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
                     } else {
-                        el.innerText = "+" + Math.ceil(current);
+                        el.innerText = "+" + target;
                     }
-                }, 40);
+                }
+
+                requestAnimationFrame(update);
             }
+
 
             document.querySelectorAll('.accordion-header').forEach(header => {
                 header.addEventListener('click', () => {
