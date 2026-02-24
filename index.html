@@ -2405,28 +2405,86 @@
                 e.preventDefault();
                 const btn = form.querySelector('button[type="submit"]');
                 const originalText = btn.innerText;
-                
-                const phone = document.getElementById('phone').value;
-                if (!/^\+?[\d\s-]{7,}$/.test(phone)) {
+                const nombre_completo = form.name.value.trim();
+                const telefono = form.phone.value.trim();
+                const correo = form.email.value.trim();
+                const interes_principal = form.type.value === 'Gondor' ? 'Reinos' : form.type.value === 'Golf' ? 'Colinas' : form.type.value === 'Inversiones' ? 'Inversion' : form.type.value;
+                const mensaje = form.message.value.trim();
+                const privacidad = form.privacy.checked;
+                if (!privacidad) {
+                    showFeedback('Debes aceptar los Términos de Privacidad.', 'error');
+                    return;
+                }
+                if (!/^\+?[\d\s-]{7,}$/.test(telefono)) {
                     showFeedback('Por favor ingrese un teléfono válido.', 'error');
                     return;
                 }
-
                 btn.disabled = true;
                 btn.innerText = 'Enviando...';
                 feedback.style.display = 'none';
-
                 try {
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    showFeedback('¡Mensaje enviado con éxito! Nos contactaremos pronto.', 'success');
-                    form.reset();
+                    const res = await fetch('https://alpex-back.vercel.app/api/solicitudes', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            nombre_completo,
+                            telefono,
+                            correo,
+                            interes_principal,
+                            mensaje
+                        })
+                    });
+                    if (res.ok) {
+                        showFeedback('¡Datos Registrados!', 'success');
+                        form.reset();
+                    } else {
+                        showFeedback('Error al registrar. Intenta nuevamente.', 'error');
+                    }
                 } catch (err) {
-                    showFeedback('Hubo un error. Intente nuevamente.', 'error');
+                    showFeedback('Error de conexión. Intenta más tarde.', 'error');
                 } finally {
                     btn.disabled = false;
                     btn.innerText = originalText;
                 }
             });
+            // --- NEWSLETTER FORM API ---
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    let input = newsletterForm.querySelector('input[type="email"]');
+                    let correo = input.value.trim();
+                    input.disabled = true;
+                    let btn = newsletterForm.querySelector('button[type="submit"]');
+                    let oldBtnText = btn.innerHTML;
+                    btn.innerHTML = 'Enviando...';
+                    btn.disabled = true;
+                    try {
+                        const res = await fetch('https://alpex-back.vercel.app/api/newsletter', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ correo })
+                        });
+                        if (res.ok) {
+                            btn.innerHTML = '¡Datos Registrados!';
+                            btn.style.background = '#27ae60';
+                            input.value = '';
+                        } else {
+                            btn.innerHTML = 'Error, intenta de nuevo';
+                            btn.style.background = '#e74c3c';
+                        }
+                    } catch (err) {
+                        btn.innerHTML = 'Error de conexión';
+                        btn.style.background = '#e74c3c';
+                    }
+                    setTimeout(() => {
+                        btn.innerHTML = oldBtnText;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                        input.disabled = false;
+                    }, 2500);
+                });
+            }
 
             function showFeedback(msg, type) {
                 feedback.innerText = msg;
