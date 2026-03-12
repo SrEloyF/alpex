@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="ALPEX Inmobiliaria. Encuentra propiedades exclusivas con alto retorno de inversión. Asesoría experta en bienes raíces.">
     <title>ALPEX | Inmobiliaria de Alto Nivel</title>
-    
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -1011,10 +1012,70 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .newsletter-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .newsletter-input-group {
+            display: flex;
+            width: 100%;
+            background: #fff;
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .newsletter-input-group:focus-within {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .newsletter-input-group input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0 25px;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 500;
+            min-width: 0;
+        }
+
+        .newsletter-input-group input:focus {
+            outline: none;
+        }
+
+        .newsletter-input-group input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-input-group .btn-submit {
+            background: var(--bg-dark);
+            color: #fff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-input-group .btn-submit:hover {
+            background: var(--bg-card);
+            padding-right: 45px;
+        }
+
+        /* Contenedor del Captcha para asegurar que no se desborde */
+        .cf-turnstile-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            min-height: 65px; /* Evita saltos en la pantalla mientras carga el iframe */
         }
 
         .newsletter-section h2 {
@@ -1037,10 +1098,8 @@
 
         .newsletter-form {
             display: flex;
-            background: #fff;
-            padding: 8px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            align-items: center; /* centra verticalmente */
+            padding: 12px;
             max-width: 550px;
             margin: 0 auto;
             transition: var(--transition);
@@ -1108,6 +1167,29 @@
             
             .newsletter-form .btn-submit {
                 height: 60px;
+            }
+            
+            .newsletter-input-group {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+                gap: 15px;
+                padding: 0;
+            }
+            
+            .newsletter-input-group input {
+                flex: none;
+                width: 100%; 
+                background: #fff;
+                height: 60px;
+                border-radius: 30px;
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .newsletter-input-group .btn-submit {
+                height: 60px;
+                width: 100%;
             }
         }
 
@@ -1370,6 +1452,12 @@
             margin-top: 20px;
             font-weight: 500;
         }
+        
+        .turnstile-center{
+            display: block;
+            margin: 16px auto;
+            width: fit-content;
+        }
 
         @media (max-width: 768px) {
             .form-container { padding: 40px 20px; }
@@ -1626,7 +1714,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="assets/logo_alpex.png" alt="ALPEX">
+                <img src="assets/logo_alpex.webp" alt="ALPEX">
             </a>
             <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
             <ul class="nav-links">
@@ -1644,7 +1732,7 @@
     </nav>
 
     <section id="hero" class="hero">
-        <video id="hero-video" class="hero-video" autoplay muted loop playsinline>
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline poster="assets/placeholder_video_hero.webp" preload="metadata">
             <source src="assets/video_hero.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -1797,7 +1885,7 @@
                 <article class="blog-card">
                     <div class="blog-image-wrap">
                         <span class="blog-badge">Mercado</span>
-                        <img src="assets/blog1.png" alt="Tendencias Inmobiliarias 2026" loading="lazy">
+                        <img src="assets/blog1.webp" alt="Tendencias Inmobiliarias 2026" loading="lazy">
                     </div>
                     <div class="blog-content">
                         <time class="blog-date" datetime="2026-01-20">20 ENE 2026</time>
@@ -1810,7 +1898,7 @@
                 <article class="blog-card">
                     <div class="blog-image-wrap">
                         <span class="blog-badge">Inversión</span>
-                        <img src="assets/blog1.png" alt="Revalorizar propiedad" loading="lazy">
+                        <img src="assets/blog1.webp" alt="Revalorizar propiedad" loading="lazy">
                     </div>
                     <div class="blog-content">
                         <time class="blog-date" datetime="2026-01-15">15 ENE 2026</time>
@@ -1823,7 +1911,7 @@
                 <article class="blog-card">
                     <div class="blog-image-wrap">
                         <span class="blog-badge">Legal</span>
-                        <img src="assets/blog1.png" alt="Guía legal" loading="lazy">
+                        <img src="assets/blog1.webp" alt="Guía legal" loading="lazy">
                     </div>
                     <div class="blog-content">
                         <time class="blog-date" datetime="2026-01-08">08 ENE 2026</time>
@@ -1863,7 +1951,7 @@
                         <p>"La asesoría de ALPEX fue fundamental para encontrar mi departamento ideal. Su capacidad para entender lo que buscaba como inversionista fue excepcional."</p>
                     </div>
                     <div class="author-info">
-                        <img src="assets/cliente1.png" alt="Carlos Méndez" class="author-avatar">
+                        <img src="assets/cliente1.webp" alt="Carlos Méndez" class="author-avatar">
                         <div class="author-details">
                             <h4>Carlos Méndez</h4>
                             <span>Inversionista Senior</span>
@@ -1884,7 +1972,7 @@
                         <p>"Gracias al equipo logré vender mi propiedad en tiempo récord. El marketing digital que aplicaron superó todas mis expectativas de precio."</p>
                     </div>
                     <div class="author-info">
-                        <img src="assets/cliente1.png" alt="Sofía Alva" class="author-avatar">
+                        <img src="assets/cliente1.webp" alt="Sofía Alva" class="author-avatar">
                         <div class="author-details">
                             <h4>Sofía Alva</h4>
                             <span>Propietaria</span>
@@ -1905,7 +1993,7 @@
                         <p>"Transparencia y claridad en cada paso. Comprar sobre planos nunca fue tan seguro. La atención post-venta es lo que realmente marca la diferencia."</p>
                     </div>
                     <div class="author-info">
-                        <img src="assets/cliente1.png" alt="Javier Torres" class="author-avatar">
+                        <img src="assets/cliente1.webp" alt="Javier Torres" class="author-avatar">
                         <div class="author-details">
                             <h4>Javier Torres</h4>
                             <span>Arquitecto</span>
@@ -1931,7 +2019,7 @@
                         <span class="">ACADEMIA<br>ALPEX</span>
                     </h2>
                     <div class="academia-image-wrap">
-                        <img src="assets/academia.png" alt="Academia ALPEX" loading="lazy">
+                        <img src="assets/academia.webp" alt="Academia ALPEX" loading="lazy">
                     </div>
                 </div>
                 <div class="academia-content-col">
@@ -2002,12 +2090,18 @@
                 <p>Únete a nuestra comunidad exclusiva y recibe gratis el PDF: <strong>"Claves para invertir con éxito en 2026"</strong>.</p>
                 
                 <form id="newsletter-form" class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
-                    <button type="submit" class="btn-submit">
-                        Suscribirme <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
-                    </button>
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+                        <button type="submit" class="btn-submit"> 
+                            Suscribirme <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="cf-turnstile-wrapper">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAACpeh5RBmRZ7kqTO"></div>
+                    </div>
                 </form>
-                
+
                 <small style="display: block; margin-top: 20px; opacity: 0.6; font-weight: 600; color: #fff;">
                     <i class="fa-solid fa-shield-halved"></i> Privacidad garantizada. Sin spam.
                 </small>
@@ -2073,6 +2167,8 @@
                         <label for="privacy">He leído y acepto los <strong>Términos de Privacidad</strong> para el tratamiento de mis datos personales.</label>
                     </div>
 
+                    <div class="cf-turnstile turnstile-center" data-sitekey="0x4AAAAAACpeh5RBmRZ7kqTO"></div>
+
                     <button type="submit" class="btn btn-primary btn-submit-contact" style="width: 100%;">
                         Enviar Solicitud <i class="fa-solid fa-paper-plane"></i>
                     </button>
@@ -2123,7 +2219,7 @@
             <div class="footer-grid">
                 <div>
                     <a href="#" class="logo">
-                        <img src="assets/logo_alpex.png" alt="ALPEX">
+                        <img src="assets/logo_alpex.webp" alt="ALPEX">
                     </a>
                     <p style="color: var(--text-muted); margin-top: 15px;">Construyendo confianza, cimentando futuros.</p>
                 </div>
@@ -2232,19 +2328,20 @@
                     id: 1,
                     title: "Reinos de Gondor",
                     category: "Casas de Campo",
-                    mainImg: "assets/proyecto1.png",
+                    mainImg: "assets/proyecto1.webp",
                     video: "assets/proyecto1.mp4",
-                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
+                    gallery: ["assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp"],
                     desc: "Exclusivos departamentos con vista al mar. Acabados en mármol y domótica integrada. Ubicado en la zona más prestigiosa de la ciudad.",
                     timeline: ["Enero 2024", "Julio 2025", "Marzo 2026"]
                 },
                 {
                     id: 2,
                     title: "Colinas del Golf",
+                   
                     category: "Casas de Campo",
-                    mainImg: "assets/proyecto1.png",
+                    mainImg: "assets/proyecto1.webp",
                     video: "assets/proyecto1.mp4",
-                    gallery: ["assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png", "assets/proyecto1_1.png"],
+                    gallery: ["assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp"],
                     desc: "Espacios de trabajo colaborativos certificados LEED Gold. Eficiencia energética y ubicación estratégica en el centro financiero.",
                     timeline: ["Marzo 2023", "Agosto 2024", "Finalizado"]
                 },
@@ -2263,7 +2360,7 @@
                     card.innerHTML = `
                         <div class="project-img">
                             <img src="${p.mainImg}" alt="${p.title}" loading="lazy">
-                            <video src="${p.video}" muted loop playsinline></video>
+                            <video src="${p.video}" autoplay muted loop playsinline preload="metadata" poster="assets/placeholder_video_hero.webp"></video>
                             <div class="overlay"><span class="btn btn-outline" style="color:#fff; border-color:#fff;">Explorar</span></div>
                         </div>
                         <div class="project-info">
@@ -2402,6 +2499,13 @@
             const form = document.getElementById('contactForm');
             const feedback = document.getElementById('form-feedback');
 
+            const turnstileContainer = document.querySelector('.cf-turnstile');
+            if (!turnstileContainer) {
+                btn.innerHTML = 'Error: Turnstile no encontrado';
+                btn.style.background = '#e74c3c';
+                return;
+            }
+
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = form.querySelector('button[type="submit"]');
@@ -2423,6 +2527,16 @@
                 btn.disabled = true;
                 btn.innerText = 'Enviando...';
                 feedback.style.display = 'none';
+
+                const tokenInputForm = turnstileContainer.querySelector('input[name="cf-turnstile-response"]');
+                const tokenForm = tokenInputForm ? tokenInputForm.value.trim() : '';
+
+                if (!tokenForm) {
+                    btn.innerHTML = 'Completa el captcha';
+                    btn.style.background = '#e74c3c';
+                    return;
+                }
+
                 try {
                     const res = await fetch('https://alpex-back.vercel.app/api/solicitudes', {
                         method: 'POST',
@@ -2432,7 +2546,8 @@
                             telefono,
                             correo,
                             interes_principal,
-                            mensaje
+                            mensaje,
+                            "cf-turnstile-response": tokenForm
                         })
                     });
                     if (res.ok) {
@@ -2460,16 +2575,27 @@
                     let oldBtnText = btn.innerHTML;
                     btn.innerHTML = 'Enviando...';
                     btn.disabled = true;
+
+
+                    const tokenInputNews = turnstileContainer.querySelector('input[name="cf-turnstile-response"]');
+                    const tokenNews = tokenInputNews ? tokenInputNews.value.trim() : '';
+
+                    if (!tokenNews) {
+                        btn.innerHTML = 'Completa el captcha';
+                        btn.style.background = '#e74c3c';
+                        return;
+                    }
                     try {
                         const res = await fetch('https://alpex-back.vercel.app/api/newsletter', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ correo })
+                            body: JSON.stringify({ correo, "cf-turnstile-response": tokenNews })
                         });
                         if (res.ok) {
                             btn.innerHTML = '¡Datos Registrados!';
                             btn.style.background = '#27ae60';
                             input.value = '';
+                            turnstile.reset(turnstileContainer);
                         } else {
                             btn.innerHTML = 'Error, intenta de nuevo';
                             btn.style.background = '#e74c3c';
@@ -2477,6 +2603,7 @@
                     } catch (err) {
                         btn.innerHTML = 'Error de conexión';
                         btn.style.background = '#e74c3c';
+                        console.log(err);
                     }
                     setTimeout(() => {
                         btn.innerHTML = oldBtnText;
