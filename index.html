@@ -1032,7 +1032,7 @@
 
         .newsletter-input-group:focus-within {
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            /*box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);*/
         }
 
         .newsletter-input-group input {
@@ -1107,7 +1107,7 @@
 
         .newsletter-form:focus-within {
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            /*box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);*/
         }
 
         .newsletter-form input {
@@ -2090,6 +2090,10 @@
                 <p>Únete a nuestra comunidad exclusiva y recibe gratis el PDF: <strong>"Claves para invertir con éxito en 2026"</strong>.</p>
                 
                 <form id="newsletter-form" class="newsletter-form">
+                    <div style="display:none;">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" autocomplete="off">
+                    </div>
                     <div class="newsletter-input-group">
                         <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
                         <button type="submit" class="btn-submit"> 
@@ -2118,6 +2122,10 @@
 
             <div class="form-container reveal">
                 <form id="contactForm" novalidate>
+                    <div style="display:none;">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" autocomplete="off">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Nombre Completo</label>
@@ -2329,7 +2337,7 @@
                     title: "Reinos de Gondor",
                     category: "Casas de Campo",
                     mainImg: "assets/proyecto1.webp",
-                    video: "assets/proyecto1.mp4",
+                    video: "assets/proyecto_1.mp4",
                     gallery: ["assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp"],
                     desc: "Exclusivos departamentos con vista al mar. Acabados en mármol y domótica integrada. Ubicado en la zona más prestigiosa de la ciudad.",
                     timeline: ["Enero 2024", "Julio 2025", "Marzo 2026"]
@@ -2340,7 +2348,7 @@
                    
                     category: "Casas de Campo",
                     mainImg: "assets/proyecto1.webp",
-                    video: "assets/proyecto1.mp4",
+                    video: "assets/proyecto_1.mp4",
                     gallery: ["assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp", "assets/proyecto1_1.webp"],
                     desc: "Espacios de trabajo colaborativos certificados LEED Gold. Eficiencia energética y ubicación estratégica en el centro financiero.",
                     timeline: ["Marzo 2023", "Agosto 2024", "Finalizado"]
