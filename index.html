@@ -787,13 +787,22 @@
 
         /* --- TESTIMONIOS --- */
         .testimonial-slider {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             gap: 30px;
-            padding: 20px 5px;
+            padding: 20px 5px 30px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
         }
 
         .testimonial-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px;
@@ -863,22 +872,41 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .testimonial-dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
 
-        @media (max-width: 1024px) {
-            .testimonial-slider {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                padding-bottom: 30px;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--brand);
+            width: 24px;
+            border-radius: 12px;
+        }
+
+        .testimonial-dot:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (min-width: 1025px) {
+            .testimonial-card {
+                flex: 0 0 calc((100% - 60px) / 3);
+                scroll-snap-align: center;
             }
             
-            .testimonial-slider::-webkit-scrollbar { display: none; }
-
-            .testimonial-card {
-                min-width: 85%;
-                scroll-snap-align: center;
+            .testimonial-slider {
+                padding: 40px 0;
             }
         }
 
@@ -1676,22 +1704,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Estado inicial: Invisible y desplazado hacia abajo */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transition-delay: 0.1s; /* Un pequeño retraso para suavidad */
+            transition-delay: 0.1s;
             will-change: opacity, transform;
         }
 
-        /* Estado final: Visible en su posición original */
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Respetar la preferencia de movimiento reducido del usuario */
         @media (prefers-reduced-motion: reduce) {
             .reveal {
                 transition: none !important;
@@ -1733,7 +1758,7 @@
 
     <section id="hero" class="hero">
         <video id="hero-video" class="hero-video" autoplay muted loop playsinline poster="assets/placeholder_video_hero.webp" preload="metadata">
-            <source src="assets/video_hero.mp4" type="video/mp4">
+            <source src="assets/video_hero_1.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <canvas id="particles-canvas"></canvas>
@@ -1930,14 +1955,14 @@
         </div>
     </section>
 
-    <section id="testimonios" class="section-padding container">
+    <section id="testimonios" class="section-padding">
         <div class="container">
             <div class="section-title reveal">
                 <span>Confianza de Élite</span>
                 <h2>Historias de éxito con ALPEX</h2>
             </div>
 
-            <div class="testimonial-slider reveal">
+            <div class="testimonial-slider reveal" id="testimonialSlider">
                 <div class="testimonial-card">
                     <div>
                         <i class="fa-solid fa-quote-left quote-icon-fa"></i>
@@ -2064,6 +2089,9 @@
                     </div>
                 </div>
             </div>
+
+            <div class="testimonial-dots-container"></div>
+
         </div>
     </section>
 
@@ -2314,9 +2342,9 @@
                     <p style="color: var(--text-muted);">contacto@alpex.com</p>
                     <p style="color: var(--text-muted);">+51 987 654 321</p>
                     <div class="social-icons" style="margin-top: 15px;">
-                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/grupoalpex" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="https://www.facebook.com/grupoalpex" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/alpex-grupo-inmobiliario" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -2356,6 +2384,62 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.testimonial-slider');
+            const dotsContainer = document.querySelector('.testimonial-dots-container');
+            
+            if (!slider || !dotsContainer) return;
+            
+            const cards = slider.querySelectorAll('.testimonial-card');
+            const cardCount = cards.length;
+            
+            if (cardCount === 0) return;
+            
+            for (let i = 0; i < cardCount; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('testimonial-dot');
+                dot.dataset.index = i;
+                
+                dot.addEventListener('click', function() {
+                    cards[i].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'start'
+                    });
+                });
+                
+                dotsContainer.appendChild(dot);
+            }
+            
+            function updateActiveDot() {
+                const sliderRect = slider.getBoundingClientRect();
+                let activeIndex = 0;
+                let maxVisibleArea = 0;
+                
+                cards.forEach((card, index) => {
+                    const cardRect = card.getBoundingClientRect();
+                    
+                    const visibleLeft = Math.max(cardRect.left, sliderRect.left);
+                    const visibleRight = Math.min(cardRect.right, sliderRect.right);
+                    const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+                    
+                    if (visibleWidth > maxVisibleArea) {
+                        maxVisibleArea = visibleWidth;
+                        activeIndex = index;
+                    }
+                });
+                
+                document.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            }
+            
+            slider.addEventListener('scroll', updateActiveDot);
+            window.addEventListener('resize', updateActiveDot);
+            
+            updateActiveDot();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             
             const navbar = document.querySelector('.navbar');
@@ -2403,7 +2487,7 @@
                     mainImg: "assets/reinos1.png",
                     video: "assets/reinos.mp4",
                     gallery: ["assets/reinos1.png", "assets/reinos2.png", "assets/reinos3.png", "assets/reinos4.png"],
-                    desc: "Casas de campo exclusivas con alto potencial de valorización, ubicadas en Poroto a 35 minutos de Trujillo, en una de las zonas con mayor proyección.",
+                    desc: "Casas de campo con temática cinematográfica, rodeadas de naturaleza y diseñadas para un estilo de vida único, ubicadas en Cerro Blanco a 25 minutos de Trujillo, con gran proyección de valorización.",
                     timeline: ["Agosto 2026", "En proceso", "Agosto 2029"]
                 },
                 {
@@ -2413,7 +2497,7 @@
                     mainImg: "assets/golf1.png",
                     video: "assets/golf.mp4",
                     gallery: ["assets/golf1.png", "assets/golf2.png", "assets/golf3.png", "assets/golf4.png"],
-                    desc: "Casas de campo con temática cinematográfica, rodeadas de naturaleza y diseñadas para un estilo de vida único, ubicadas en Cerro Blanco a 25 minutos de Trujillo, con gran proyección de valorización.",
+                    desc: "Casas de campo exclusivas con alto potencial de valorización, ubicadas en Poroto a 35 minutos de Trujillo, en una de las zonas con mayor proyección.",
                     timeline: ["Agosto 2026", "En proceso", "Agosto 2029"]
                 },
             ];
