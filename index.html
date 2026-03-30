@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="ALPEX Inmobiliaria. Encuentra propiedades exclusivas con alto retorno de inversión. Asesoría experta en bienes raíces.">
-    <title>ALPEX | Inmobiliaria de Alto Nivel</title>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <title>ALPEX Inmobiliaria | Propiedades de Lujo e Inversión en Perú</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://grupoalpex.com">
 
     <meta property="og:title" content="ALPEX Inmobiliaria">
     <meta property="og:description" content="Propiedades exclusivas y asesoría de inversión inmobiliaria.">
     <meta property="og:image" content="https://placehold.co/1200x630/111217/D9A520?text=ALPEX">
     <meta property="og:type" content="website">
-
+    <meta property="og:url" content="https://grupoalpex.com">
+    <meta property="og:site_name" content="ALPEX">
+    <meta property="og:locale" content="es_PE">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="PE">
+    <meta name="geo.placename" content="Perú">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
       "name": "ALPEX",
-      "image": "https://placehold.co/500x500/111217/D9A520?text=Logo",
+      "image": "https://grupoalpex.com/assets/favicon.ico",
       "description": "Inmobiliaria especializada en propiedades de lujo e inversión.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Av. España 123",
-        "addressLocality": "Ciudad Capital",
+        "addressLocality": "Trujillo",
         "addressCountry": "PE"
       },
-      "telephone": "+51987654321",
+      "telephone": "+51932989900",
       "priceRange": "$$$"
     }
     </script>
@@ -54,6 +62,7 @@
       }]
     }
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
         /* --- VARIABLES & RESET --- */
@@ -642,19 +651,28 @@
             background: #000;
         }
         
-        .project-img img, 
-        .project-img video {
+        .project-img img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, transform 1.5s ease;
         }
 
-        .project-img video {
+        .project-img .second-img {
             opacity: 0;
+            transform: scale(1);
+        }
+
+        .project-card:hover .main-img {
+            opacity: 0;
+        }
+
+        .project-card:hover .second-img {
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         .project-info {
@@ -682,9 +700,7 @@
         .project-card:hover .overlay {
             opacity: 1;
         }
-        
-        .project-card:hover .project-img img { opacity: 0; }
-        .project-card:hover .project-img video { opacity: 1; }
+    
 
         /* --- BENEFICIOS (COUNTERS) --- */
         .benefits-grid {
@@ -2340,7 +2356,7 @@
                 <div>
                     <h4 style="margin-bottom: 20px;">Contacto</h4>
                     <p style="color: var(--text-muted);">contacto@alpex.com</p>
-                    <p style="color: var(--text-muted);">+51 987 654 321</p>
+                    <p style="color: var(--text-muted);">+51 932 989 900</p>
                     <div class="social-icons" style="margin-top: 15px;">
                         <a href="https://www.instagram.com/grupoalpex" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
                         <a href="https://www.facebook.com/grupoalpex" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
@@ -2485,20 +2501,20 @@
                     title: "Reinos de Gondor",
                     category: "Casas de Campo",
                     mainImg: "assets/reinos1.png",
-                    video: "assets/reinos.mp4",
+                    secondImg: "assets/reinos2.png",
                     gallery: ["assets/reinos1.png", "assets/reinos2.png", "assets/reinos3.png", "assets/reinos4.png"],
                     desc: "Casas de campo con temática cinematográfica, rodeadas de naturaleza y diseñadas para un estilo de vida único, ubicadas en Cerro Blanco a 25 minutos de Trujillo, con gran proyección de valorización.",
-                    timeline: ["Agosto 2026", "En proceso", "Agosto 2029"]
+                    timeline: ["Agosto 2025", "En proceso", "Agosto 2028"]
                 },
                 {
                     id: 2,
                     title: "Colinas del Golf",  
                     category: "Casas de Campo",
                     mainImg: "assets/golf1.png",
-                    video: "assets/golf.mp4",
+                    secondImg: "assets/golf2.png",
                     gallery: ["assets/golf1.png", "assets/golf2.png", "assets/golf3.png", "assets/golf4.png"],
                     desc: "Casas de campo exclusivas con alto potencial de valorización, ubicadas en Poroto a 35 minutos de Trujillo, en una de las zonas con mayor proyección.",
-                    timeline: ["Agosto 2026", "En proceso", "Agosto 2029"]
+                    timeline: ["Agosto 2025", "En proceso", "Agosto 2028"]
                 },
             ];
 
@@ -2515,7 +2531,7 @@
                     card.innerHTML = `
                         <div class="project-img">
                             <img src="${p.mainImg}" alt="${p.title}" loading="lazy">
-                            <video src="${p.video}" autoplay muted loop playsinline preload="metadata" poster="assets/placeholder_video_hero.webp"></video>
+                            <img class="second-img" src="${p.secondImg}" alt="${p.title}" loading="lazy">
                             <div class="overlay"><span class="btn btn-outline" style="color:#fff; border-color:#fff;">Explorar</span></div>
                         </div>
                         <div class="project-info">
@@ -2523,13 +2539,13 @@
                             <h3>${p.title}</h3>
                         </div>
                     `;
-                    
+                    /*
                     const video = card.querySelector('video');
                     card.addEventListener('mouseenter', () => video.play());
                     card.addEventListener('mouseleave', () => {
                         video.pause();
                         video.currentTime = 0;
-                    });
+                    });*/
 
                     card.addEventListener('click', () => openModal(p));
                     grid.appendChild(card);
